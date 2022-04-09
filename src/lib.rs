@@ -22,6 +22,11 @@ mod test {
             app.append_row(params![i, "1970-01-01T00:00:00Z"]).unwrap();
         }
 
+        // running 1 test
+        // error: test failed, to rerun pass '--lib'
+        // Caused by:
+        //   process didn't exit successfully: `/path-to-repo` (signal: 11, SIGSEGV: invalid memory reference)
+
         let val = db
             .query_row("SELECT count(1) FROM item", [], |row| {
                 <(u32,)>::try_from(row)
